@@ -18,7 +18,32 @@ namespace Packy.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult SignUp()
+        {
+            return View();
+        }
+
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        public IActionResult NewOrder()
+        {
+            return View();
+        }
+
+        public IActionResult ViewOrder()
+        {
+            return View();
+        }
+
+        public IActionResult Contact()
+        {
+            return View();
+        }
+
+        public IActionResult UserInfo()
         {
             return View();
         }

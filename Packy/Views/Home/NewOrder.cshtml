@@ -1,0 +1,79 @@
+﻿@{
+    ViewData["Title"] = "New Order";
+}
+
+<h1 style="text-align: center;">@ViewData["Title"]</h1>
+
+<div style="max-width: 600px; margin: auto; padding: 20px; margin-bottom: 60px;">
+    <form action="/new-order" method="post">
+        <div style="margin-bottom: 15px;">
+            <label for="awb" style="display: block; margin-bottom: 5px;">Order AWB:</label>
+            <input type="text" id="awb" name="awb" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" required>
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label for="expeditorName" style="display: block; margin-bottom: 5px;">Expeditor Name:</label>
+            <input type="text" id="expeditorName" name="expeditorName" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" required>
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label for="personType" style="display: block; margin-bottom: 5px;">Person or Firm:</label>
+            <select id="personType" name="personType" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+                <option value="PhysicalPerson">Physical Person</option>
+                <option value="Firm">Firm</option>
+            </select>
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label for="name" style="display: block; margin-bottom: 5px;">Name:</label>
+            <input type="text" id="name" name="name" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" required>
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label for="county" style="display: block; margin-bottom: 5px;">County/Region:</label>
+            <input type="text" id="county" name="county" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" required>
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label for="zipCode" style="display: block; margin-bottom: 5px;">Zip Code:</label>
+            <input type="text" id="zipCode" name="zipCode" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" required>
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label for="address" style="display: block; margin-bottom: 5px;">Street, Building, Floor, Apt Number:</label>
+            <input type="text" id="address" name="address" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" required>
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label for="status" style="display: block; margin-bottom: 5px;">Order Status:</label>
+            <select id="status" name="status" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+                <option value="Pending">Pending</option>
+                <option value="In Transit">In Transit</option>
+                <option value="Delivered">Delivered</option>
+                <option value="Cancelled">Cancelled</option>
+            </select>
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label for="weight" style="display: block; margin-bottom: 5px;">Order Weight:</label>
+            <input type="text" id="weight" name="weight" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" required>
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label for="fragile" style="display: block; margin-bottom: 5px;">Fragile:</label>
+            <input type="radio" id="fragileYes" name="fragile" value="Yes">
+            <label for="fragileYes" style="margin-right: 10px;">Yes</label>
+            <input type="radio" id="fragileNo" name="fragile" value="No" checked>
+            <label for="fragileNo">No</label>
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label for="observations" style="display: block; margin-bottom: 5px;">Observations:</label>
+            <textarea id="observations" name="observations" rows="4" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" placeholder="Any additional details about the order"></textarea>
+        </div>
+
+        <div style="text-align: right;">
+            <input type="submit" value="Create Order" style="background-color: #4CAF50; color: white; padding: 14px 20px; border: none; border-radius: 4px; cursor: pointer;">
+        </div>
+    </form>
+</div>

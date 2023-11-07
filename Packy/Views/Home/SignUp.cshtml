@@ -1,0 +1,140 @@
+﻿@{
+    ViewData["Title"] = "SignUp";
+}
+
+<style>
+    .signup-container {
+        max-width: 400px;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background: #f9f9f9;
+    }
+
+    .signup-title {
+        text-align: center;
+    }
+
+    .signup-form div {
+        margin-bottom: 10px;
+    }
+
+    .signup-label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .signup-input,
+    .signup-select {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .signup-submit {
+        background-color: #4CAF50;
+        color: white;
+        cursor: pointer;
+        width: 100%;
+        padding: 8px;
+        border-radius: 4px;
+        margin-top: 10px;
+    }
+
+    .signup-submit:hover {
+        background-color: #45a049;
+    }
+
+    .hidden {
+        display: none;
+    }
+</style>
+
+<script>
+    function toggleFields() {
+        var selection = document.getElementById("userType").value;
+        var personFields = document.getElementById("personFields");
+        var firmFields = document.getElementById("firmFields");
+
+        if (selection === "PhysicalPerson") {
+            personFields.style.display = "block";
+            firmFields.style.display = "none";
+        } else {
+            personFields.style.display = "none";
+            firmFields.style.display = "block";
+        }
+    }
+</script>
+
+<div class="signup-container">
+    <h1 class="signup-title">@ViewData["Title"]</h1>
+    <form action="/signup" method="post" class="signup-form">
+        <div>
+            <label for="userType" class="signup-label">I am a:</label>
+            <select id="userType" name="userType" class="signup-select" onchange="toggleFields()">
+                <option value="PhysicalPerson">Physical Person</option>
+                <option value="Firm">Firm</option>
+            </select>
+        </div>
+        <div id="personFields">
+            <div>
+                <label for="firstName" class="signup-label">First Name:</label>
+                <input type="text" id="firstName" name="firstName" class="signup-input">
+            </div>
+            <div>
+                <label for="lastName" class="signup-label">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" class="signup-input">
+            </div>
+
+        </div>
+
+        <div id="firmFields" class="hidden">
+            <div>
+                <label for="firmName" class="signup-label">Firm Name:</label>
+                <input type="text" id="firmName" name="firmName" class="signup-input">
+            </div>
+            <div>
+                <label for="firmWebsite" class="signup-label">Firm Website:</label>
+                <input type="text" id="firmWebsite" name="firmWebsite" class="signup-input">
+            </div>
+        </div>
+
+        <div>
+            <label for="country" class="signup-label">Country:</label>
+            <select id="country" name="country" class="signup-select">
+                <option value="RO">Romania</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="county" class="signup-label">County/Region:</label>
+            <input type="text" id="county" name="county" class="signup-input">
+        </div>
+        <div>
+            <label for="zipCode" class="signup-label">Zip Code:</label>
+            <input type="text" id="zipCode" name="zipCode" class="signup-input">
+        </div>
+        <div>
+            <label for="address" class="signup-label">Street, Building, Floor, Apt Number:</label>
+            <input type="text" id="address" name="address" class="signup-input">
+        </div>
+
+        <div>
+            <label for="password" class="signup-label">Password:</label>
+            <input type="password" id="password" name="password" class="signup-input">
+        </div>
+        <div>
+            <label for="repeatPassword" class="signup-label">Repeat Password:</label>
+            <input type="password" id="repeatPassword" name="repeatPassword" class="signup-input">
+        </div>
+
+        <div>
+            <input type="submit" value="Sign Up" class="signup-submit">
+        </div>
+    </form>
+</div>
+
+       
