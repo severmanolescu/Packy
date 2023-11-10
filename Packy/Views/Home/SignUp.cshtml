@@ -9,7 +9,6 @@
         padding: 20px;
         border: 1px solid #ccc;
         border-radius: 5px;
-        background: #f9f9f9;
     }
 
     .signup-title {
@@ -103,6 +102,16 @@
         </div>
 
         <div>
+            <label for="email" class="signup-label">Email:</label>
+            <input type="email" id="email" name="email" class="signup-input">
+        </div>
+
+        <div>
+            <label for="phone" class="signup-label">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" class="signup-input">
+        </div>
+
+        <div>
             <label for="country" class="signup-label">Country:</label>
             <select id="country" name="country" class="signup-select">
                 <option value="RO">Romania</option>
@@ -113,10 +122,12 @@
             <label for="county" class="signup-label">County/Region:</label>
             <input type="text" id="county" name="county" class="signup-input">
         </div>
+
         <div>
             <label for="zipCode" class="signup-label">Zip Code:</label>
             <input type="text" id="zipCode" name="zipCode" class="signup-input">
         </div>
+
         <div>
             <label for="address" class="signup-label">Street, Building, Floor, Apt Number:</label>
             <input type="text" id="address" name="address" class="signup-input">
@@ -126,6 +137,7 @@
             <label for="password" class="signup-label">Password:</label>
             <input type="password" id="password" name="password" class="signup-input">
         </div>
+
         <div>
             <label for="repeatPassword" class="signup-label">Repeat Password:</label>
             <input type="password" id="repeatPassword" name="repeatPassword" class="signup-input">
@@ -133,6 +145,10 @@
 
         <div>
             <input type="submit" value="Sign Up" class="signup-submit">
+        </div>
+
+        <div style="margin-top: 16px; text-align: center;">
+            <p>Already have an account? Go to the <a href="/Home/Login" style="color: #4CAF50; text-decoration: none;">login</a> page.</p>
         </div>
     </form>
 </div>
