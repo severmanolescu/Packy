@@ -6,10 +6,6 @@
 
 <div style="max-width: 600px; margin: auto; padding: 20px; margin-bottom: 60px;">
     <form action="/new-order" method="post">
-        <div style="margin-bottom: 15px;">
-            <label for="awb" style="display: block; margin-bottom: 5px;">Order AWB:</label>
-            <input type="text" id="awb" name="awb" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" required>
-        </div>
 
         <div style="margin-bottom: 15px;">
             <label for="expeditorName" style="display: block; margin-bottom: 5px;">Expeditor Name:</label>
@@ -70,6 +66,11 @@
         <div style="margin-bottom: 15px;">
             <label for="observations" style="display: block; margin-bottom: 5px;">Observations:</label>
             <textarea id="observations" name="observations" rows="4" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" placeholder="Any additional details about the order"></textarea>
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label for="awb" style="display: block; margin-bottom: 5px;">Order AWB:</label>
+            <input type="text" id="awb" name="awb" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" required>
         </div>
 
         <div style="text-align: right;">

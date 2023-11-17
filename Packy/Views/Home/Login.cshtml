@@ -9,7 +9,6 @@
         padding: 20px;
         border: 1px solid #ccc;
         border-radius: 5px;
-        background: #f9f9f9;
     }
 
     .login-title {
@@ -58,7 +57,7 @@
 
     <form action="/login" method="post" class="login-form">
         <div>
-            <label for="email" class="login-label">Email:</label>
+            <label for="email" class="login-label ">Email:</label>
             <input type="email" id="email" name="email" required class="login-input">
         </div>
 
@@ -68,12 +67,16 @@
         </div>
 
         <div>
-            <input type="checkbox" id="keepSignedIn" name="keepSignedIn" class="login-checkbox">
-            <label for="keepSignedIn" class="login-label">Keep me signed in</label>
+            <label for="keepSignedIn" class="login-label"> <input type="checkbox" id="keepSignedIn" name="keepSignedIn" class="login-checkbox"> Keep me signed in</label>
         </div>
 
         <div>
             <input type="submit" value="Sign In" class="login-submit">
         </div>
+
+        <div style="margin-top: 16px; text-align: center;">
+            <p>You don't have an account? Go to the <a href="/Home/SignUp" style="color: #4CAF50; text-decoration: none;">sign up</a> page.</p>
+        </div>
+
     </form>
 </div>

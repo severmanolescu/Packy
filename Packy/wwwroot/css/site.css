@@ -1,18 +1,58 @@
+/* Existing styles */
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: #fff; /* Light theme background */
+    color: #212529; /* Light theme text color */
 }
+
+.navbar {
+    background-color: #f8f9fa; /* Light theme navbar background */
+}
+
+.footer {
+    background-color: #f8f9fa; /* Light theme footer background */
+}
+
+/* Dark theme styles */
+body.dark-theme {
+    background-color: #343a40; /* Dark theme background for body */
+    color: #ffffff; /* Dark theme text color */
+}
+
+.dark-theme .navbar {
+    background-color: #333; /* Dark theme navbar background, a bit darker than the body */
+    color: #ffffff; /* Dark theme navbar text color */
+}
+
+    .dark-theme .navbar .navbar-brand,
+    .dark-theme .navbar .nav-link {
+        color: #ffffff; /* Dark theme text color for brand and links in the navbar */
+    }
+
+.dark-theme .footer {
+    background-color: #333; /* Dark theme footer background, matching the navbar */
+    color: #ffffff; /* Dark theme footer text color */
+}
+
+/* Ensure to update the color for any other navbar elements if needed */
+.dark-theme .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+
+/* Add more dark theme styles as needed */

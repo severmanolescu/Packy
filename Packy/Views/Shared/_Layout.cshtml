@@ -10,7 +10,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Packy</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -20,25 +20,58 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="SignUp">Sign Up</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="ViewOrder">View Order</a>
                         </li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="NewOrder">New Order</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="UserInfo">User Info</a>
+                            </li>
+                        }
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Login">Log In</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="NewOrder">New Order</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ViewOrder">View Order</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="UserInfo">User Info</a>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <!-- User dropdown menu -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="userMenu" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                User
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
+                                @if (!User.Identity.IsAuthenticated)
+                                {
+                                    <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Login">Log In</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="SignUp">Sign Up</a>
+                                }
+                                else
+                                {
+                                    <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="UserInfo">User Info</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Logout">Log Out</a>
+                                }
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="themeToggle">
+                                    <label class="form-check-label" for="themeToggle">Dark Theme</label>
+                                </div>
+                                <script>
+                                    document.addEventListener("DOMContentLoaded", function () {
+                                        var themeToggle = document.getElementById('themeToggle');
+                                        themeToggle.addEventListener('change', function (event) {
+                                            if (event.currentTarget.checked) {
+                                                document.body.classList.add('dark-theme');
+                                            } else {
+                                                document.body.classList.remove('dark-theme');
+                                            }
+                                        });
+                                    });
+                                </script>
+                            </div>
                         </li>
                     </ul>
                 </div>
