@@ -4,16 +4,15 @@
 
 <h1 style="text-align: center;">@ViewData["Title"]</h1>
 
+<style>
+    .signup-label {
+        display: block;
+        margin-bottom: 5px;
+    }
+</style>
+
 <div style="max-width: 600px; margin: auto; padding: 20px; margin-bottom: 60px;">
     <form action="/your-post-endpoint" method="post" enctype="multipart/form-data">
-        <div style="margin-bottom: 15px;">
-            <label for="userType" style="display: block; margin-bottom: 5px;">Select User Type:</label>
-            <select id="userType" name="userType" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
-                <option value="PhysicalPerson">Physical Person</option>
-                <option value="Firm">Firm</option>
-            </select>
-        </div>
-        
         <div style="margin-bottom: 15px;">
             <label for="reason" style="display: block; margin-bottom: 5px;">Reason for Complaint:</label>
             <textarea id="reason" name="reason" rows="4" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" placeholder="Enter the reason for the complaint"></textarea>
@@ -26,7 +25,7 @@
         
         <div style="margin-bottom: 15px;">
             <label for="phone" style="display: block; margin-bottom: 5px;">Phone Number:</label>
-            <input type="tel" id="phone" name="phone" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" placeholder="Your phone number">
+            <input type="number" id="phone" name="phone" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" placeholder="Your phone number">
         </div>
         
         <div style="margin-bottom: 15px;">
@@ -38,7 +37,15 @@
             <label for="attachments" style="display: block; margin-bottom: 5px;">Attach files:</label>
             <input type="file" id="attachments" name="attachments" multiple style="border: 1px solid #ccc; border-radius: 4px;">
         </div>
-        
-        <input type="submit" value="Submit Complaint" style="background-color: #4CAF50; color: white; padding: 14px 20px; border: none; border-radius: 4px; cursor: pointer; float: right;">
+
+        <button onclick="contactButton()" style="background-color: #4CAF50; color: white; padding: 14px 20px; border: none; border-radius: 4px; cursor: pointer; float: right;" type="button">Submit</button>
+
+        <div style="margin-top: 16px; text-align: center;">
+            <label for="completed" class="signup-label" id="completed"></label>
+        </div>
+
+        <div style="margin-top: 16px; text-align: center; color: red;">
+            <label for="error" class="signup-label" id="error"></label>
+        </div>
     </form>
 </div>
