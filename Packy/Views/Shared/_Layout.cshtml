@@ -38,6 +38,23 @@
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
                         </li>
                     </ul>
+                    @if (User.Identity.IsAuthenticated)//add condition if the user is admin
+                    {
+                        <ul class="navbar-nav">
+                            <!-- Admin dropdown menu -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="userMenu" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Administrator tools
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
+                                    <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="ADM_EditOrder">Edit order</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="ADM_AddDriver">Add driver</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="ADM_DriverInfo">Driver info</a>
+                                </div>
+                            </li>
+                        </ul>
+                    }
+
                     <ul class="navbar-nav">
                         <!-- User dropdown menu -->
                         <li class="nav-item dropdown">
