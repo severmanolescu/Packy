@@ -1,6 +1,46 @@
 ﻿@{
-    ViewData["Title"] = "UserInfo";
+    ViewData["Title"] = "User Information";
 }
 <h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<!-- Search bar for searching other users -->
+<div class="input-group mb-4">
+    <input type="text" class="form-control" id="userSearch" placeholder="Search for another user...">
+    <button onclick="performUserSearch()" class="btn btn-primary" type="button" id="searchButton">
+        Search
+    </button>
+</div>
+
+<!-- User Information Display -->
+<section>
+    <h2>Personal Information</h2>
+    <p><strong>Type:</strong> Model.IsFirm</p>
+    <p><strong>Name:</strong> Model.Name</p>
+    <p><strong>Email:</strong> Model.Email</p>
+    <p><strong>Country:</strong> Model.Country</p>
+</section>
+
+<!-- Table with AWB, Sender, and Status columns -->
+<section>
+    <h2>Orders</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">AWB</th>
+                <th scope="col">Sender</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Sample row (repeat this block for each order entry) -->
+            <tr>
+                <td>123456</td>
+                <td>Company A</td>
+                <td>Delivered</td>
+            </tr>
+            <!-- Add more rows here based on actual data -->
+        </tbody>
+    </table>
+</section>
+
+<!-- You would use server-side code to populate the actual user information and order data -->
