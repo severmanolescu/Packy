@@ -55,7 +55,7 @@
     <h1 class="login-title">@ViewData["Title"]</h1>
     <p>Welcome back! Please enter your details to sign in and continue to Packy.</p>
 
-    <form action="/login" method="post" class="login-form">
+    <form method="post" class="login-form">
         <div>
             <label for="email" class="login-label ">Email:</label>
             <input type="email" id="email" name="email" required class="login-input">
@@ -71,12 +71,15 @@
         </div>
 
         <div>
-            <input type="submit" value="Sign In" class="login-submit">
+                <button onclick="logIn()" class="login-submit" type="button">Sig In</button>
+        </div>
+
+        <div style="margin-top: 16px; text-align: center; color: red;">
+            <label for="error" class="signup-label" id="error"></label>
         </div>
 
         <div style="margin-top: 16px; text-align: center;">
             <p>You don't have an account? Go to the <a href="/Home/SignUp" style="color: #4CAF50; text-decoration: none;">sign up</a> page.</p>
         </div>
-
     </form>
 </div>

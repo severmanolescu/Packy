@@ -2,27 +2,27 @@
     ViewData["Title"] = "New Order";
 }
 
+<style>
+
+    .signup-submit {
+        background-color: #4CAF50;
+        color: white;
+        cursor: pointer;
+        width: 100%;
+        padding: 8px;
+        border-radius: 4px;
+        margin-top: 10px;
+    }
+</style>
+
 <h1 style="text-align: center;">@ViewData["Title"]</h1>
 
 <div style="max-width: 600px; margin: auto; padding: 20px; margin-bottom: 60px;">
     <form action="/new-order" method="post">
 
         <div style="margin-bottom: 15px;">
-            <label for="expeditorName" style="display: block; margin-bottom: 5px;">Expeditor Name:</label>
-            <input type="text" id="expeditorName" name="expeditorName" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" required>
-        </div>
-
-        <div style="margin-bottom: 15px;">
-            <label for="personType" style="display: block; margin-bottom: 5px;">Person or Firm:</label>
-            <select id="personType" name="personType" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
-                <option value="PhysicalPerson">Physical Person</option>
-                <option value="Firm">Firm</option>
-            </select>
-        </div>
-
-        <div style="margin-bottom: 15px;">
-            <label for="name" style="display: block; margin-bottom: 5px;">Name:</label>
-            <input type="text" id="name" name="name" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" required>
+            <label for="ReceiverName" style="display: block; margin-bottom: 5px;">Receiver Name:</label>
+            <input type="text" id="receiverName" name="expeditorName" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" required>
         </div>
 
         <div style="margin-bottom: 15px;">
@@ -32,7 +32,7 @@
 
         <div style="margin-bottom: 15px;">
             <label for="zipCode" style="display: block; margin-bottom: 5px;">Zip Code:</label>
-            <input type="text" id="zipCode" name="zipCode" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" required>
+            <input type="number" id="zipCode" name="zipCode" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" required>
         </div>
 
         <div style="margin-bottom: 15px;">
@@ -41,23 +41,37 @@
         </div>
 
         <div style="margin-bottom: 15px;">
-            <label for="status" style="display: block; margin-bottom: 5px;">Order Status:</label>
-            <select id="status" name="status" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
-                <option value="Pending">Pending</option>
-                <option value="In Transit">In Transit</option>
-                <option value="Delivered">Delivered</option>
-                <option value="Cancelled">Cancelled</option>
-            </select>
+            <label for="phone" style="display: block; margin-bottom: 5px;">Phone</label>
+            <input type="number" id="phone" name="phone" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" required>
         </div>
 
         <div style="margin-bottom: 15px;">
-            <label for="weight" style="display: block; margin-bottom: 5px;">Order Weight:</label>
-            <input type="text" id="weight" name="weight" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" required>
+            <label for="height" style="display: block; margin-bottom: 5px;">Height</label>
+            <input type="number" id="height" name="height" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" required>
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label for="width" style="display: block; margin-bottom: 5px;">Width</label>
+            <input type="number" id="width" name="width" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" required>
+        </div>
+        <div style="margin-bottom: 15px;">
+            <label for="length" style="display: block; margin-bottom: 5px;">Length</label>
+            <input type="number" id="length" name="length" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" required>
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label for="weight" style="display: block; margin-bottom: 5px;">Weight:</label>
+            <input type="number" id="weight" name="weight" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" required>
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label for="price" style="display: block; margin-bottom: 5px;">Price</label>
+            <input type="number" id="price" name="price" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" required>
         </div>
 
         <div style="margin-bottom: 15px;">
             <label for="fragile" style="display: block; margin-bottom: 5px;">Fragile:</label>
-            <input type="radio" id="fragileYes" name="fragile" value="Yes">
+            <input type="radio" id="fragileYes" name="fragile" value="No">
             <label for="fragileYes" style="margin-right: 10px;">Yes</label>
             <input type="radio" id="fragileNo" name="fragile" value="No" checked>
             <label for="fragileNo">No</label>
@@ -70,11 +84,14 @@
 
         <div style="margin-bottom: 15px;">
             <label for="awb" style="display: block; margin-bottom: 5px;">Order AWB:</label>
-            <input type="text" id="awb" name="awb" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;" required>
+            <div style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;" id="awb">[AWB]</div>
         </div>
 
-        <div style="text-align: right;">
-            <input type="submit" value="Create Order" style="background-color: #4CAF50; color: white; padding: 14px 20px; border: none; border-radius: 4px; cursor: pointer;">
+        <button onclick="addNewOrder()" class="signup-submit" type="button">Create order</button>
+
+        <div style="margin-bottom: 15px;">
+            <label for="error" style="display: block; margin-bottom: 5px; color: red;" id="error"></label>
         </div>
+
     </form>
 </div>
