@@ -2,19 +2,6 @@
     ViewData["Title"] = "View Order";
 }
 
-<style>
-
-    .signup-submit {
-        background-color: #4CAF50;
-        color: white;
-        cursor: pointer;
-        width: 100%;
-        padding: 8px;
-        border-radius: 4px;
-        margin-top: 10px;
-    }
-</style>
-
 <h1 style="text-align: center;">@ViewData["Title"]</h1>
 
 <div style="max-width: 600px; margin: auto; padding: 20px; margin-bottom: 60px;">
@@ -26,99 +13,72 @@
     </div>
 
     <!-- Search Button -->
-    <button onclick="viewOrder()" class="signup-submit" type="button">View Order</button>
+    <div style="text-align: center; margin-bottom: 15px;">
+        <button onclick="searchAWB()" type="button" style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer; width: 50%; max-width: 200px;">Search AWB</button>
+    </div>
 
+    <!-- Display for Expeditor Name -->
     <div style="margin-bottom: 15px;">
-        <label for="error" style="display: block; margin-bottom: 5px; color: red;" id="error"></label>
+        <label style="display: block; margin-bottom: 5px;">Expeditor Name:</label>
+        <div style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">[Expeditor Name]</div>
+    </div>
+
+    <!-- Display for Person or Firm -->
+    <div style="margin-bottom: 15px;">
+        <label style="display: block; margin-bottom: 5px;">Person or Firm:</label>
+        <div style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">[Person or Firm]</div>
+    </div>
+
+    <!-- Display for Name (Recipient or Firm) -->
+    <div style="margin-bottom: 15px;">
+        <label style="display: block; margin-bottom: 5px;">Name:</label>
+        <div style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">[Name]</div>
     </div>
 
     <div style="margin-bottom: 15px;">
-        <label for="receiverName" style="display: block; margin-bottom: 5px;">Receiver Name:</label>
-        <div style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
-            <div id="receiverName" name="receiverName" contenteditable="false" style="width: 100%; border: none;" required>[Receiver Name]</div>
+        <label style="display: block; margin-bottom: 5px;">County/Region:</label>
+        <div style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">[County/Region]</div>
+    </div>
+
+    <!-- Display for Zip Code -->
+    <div style="margin-bottom: 15px;">
+        <label style="display: block; margin-bottom: 5px;">Zip Code:</label>
+        <div style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">[Zip Code]</div>
+    </div>
+
+    <!-- Display for Street, Building, Floor, Apt Number -->
+    <div style="margin-bottom: 15px;">
+        <label style="display: block; margin-bottom: 5px;">Street, Building, Floor, Apt Number:</label>
+        <div style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">[Street, Building, Floor, Apt Number]</div>
+    </div>
+
+    <!-- Display for Order Status -->
+    <div style="margin-bottom: 15px;">
+        <label style="display: block; margin-bottom: 5px;">Order Status:</label>
+        <div style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">[Order Status]</div>
+    </div>
+
+    <!-- Display for Order Weight -->
+    <div style="margin-bottom: 15px;">
+        <label style="display: block; margin-bottom: 5px;">Order Weight:</label>
+        <div style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">[Order Weight]</div>
+    </div>
+
+    <!-- Display for Fragile Option -->
+    <div style="margin-bottom: 15px;">
+        <label style="display: block; margin-bottom: 5px;">Fragile:</label>
+        <div>
+            <input type="radio" id="fragileYes" name="fragile" value="Yes" disabled>
+            <label for="fragileYes" style="margin-right: 10px;">Yes</label>
+            <input type="radio" id="fragileNo" name="fragile" value="No" checked disabled>
+            <label for="fragileNo">No</label>
         </div>
     </div>
 
+    <!-- Display for Observations -->
     <div style="margin-bottom: 15px;">
-        <label for="county" style="display: block; margin-bottom: 5px;">County/Region:</label>
-        <div style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
-            <div id="county" name="county" contenteditable="false" style="width: 100%; border: none;" required>[County/Region]</div>
-        </div>
-    </div>
-
-    <div style="margin-bottom: 15px;">
-        <label for="zipCode" style="display: block; margin-bottom: 5px;">Zip Code:</label>
-        <div style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
-            <div id="zipCode" name="zipCode" contenteditable="false" style="width: 100%; border: none;" required>[Zip Code]</div>
-        </div>
-    </div>
-
-    <div style="margin-bottom: 15px;">
-        <label for="address" style="display: block; margin-bottom: 5px;">Street, Building, Floor, Apt Number:</label>
-        <div style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
-            <div id="address" name="address" contenteditable="false" style="width: 100%; border: none;" required>[Street, Building, Floor, Apt Number]</div>
-        </div>
-    </div>
-
-    <div style="margin-bottom: 15px;">
-        <label for="phone" style="display: block; margin-bottom: 5px;">Phone</label>
-        <div style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
-            <div id="phone" name="phone" contenteditable="false" style="width: 100%; border: none;" required>[Phone]</div>
-        </div>
-    </div>
-
-    <div style="margin-bottom: 15px;">
-        <label for="height" style="display: block; margin-bottom: 5px;">Height</label>
-        <div style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
-            <div id="height" name="height" contenteditable="false" style="width: 100%; border: none;" required>[Height]</div>
-        </div>
-    </div>
-
-    <div style="margin-bottom: 15px;">
-        <label for="width" style="display: block; margin-bottom: 5px;">Width</label>
-        <div style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
-            <div id="width" name="width" contenteditable="false" style="width: 100%; border: none;" required>[Width]</div>
-        </div>
-    </div>
-
-    <div style="margin-bottom: 15px;">
-        <label for="length" style="display: block; margin-bottom: 5px;">Length</label>
-        <div style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
-            <div id="length" name="length" contenteditable="false" style="width: 100%; border: none;" required>[Length]</div>
-        </div>
-    </div>
-
-    <div style="margin-bottom: 15px;">
-        <label for="weight" style="display: block; margin-bottom: 5px;">Weight:</label>
-        <div style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
-            <div id="weight" name="weight" contenteditable="false" style="width: 100%; border: none;" required>[Weight]</div>
-        </div>
-    </div>
-
-    <div style="margin-bottom: 15px;">
-        <label for="price" style="display: block; margin-bottom: 5px;">Price</label>
-        <div style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
-            <div id="price" name="price" contenteditable="false" style="width: 100%; border: none;" required>[Price]</div>
-        </div>
-    </div>
-
-    <div style="margin-bottom: 15px;">
-        <label for="fragile" style="display: block; margin-bottom: 5px;">Fragile:</label>
-        <div style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
-            <div id="fragile" name="fragile" contenteditable="false" style="border: none;">
-                <input type="radio" id="fragileYes" name="fragile" value="Yes" disabled>
-                <label for="fragileYes" style="margin-right: 10px;">Yes</label>
-                <input type="radio" id="fragileNo" name="fragile" value="No" checked disabled>
-                <label for="fragileNo">No</label>
-            </div>
-        </div>
-    </div>
-
-    <div style="margin-bottom: 15px;">
-        <label for="observations" style="display: block; margin-bottom: 5px;">Observations:</label>
-        <div style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
-            <div id="observations" name="observations" contenteditable="false" style="width: 100%; border: none;" placeholder="Any additional details about the order">[Observations]</div>
-        </div>
+        <label style="display: block; margin-bottom: 5px;">Observations:</label>
+        <div style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">[Observations]</div>
     </div>
 
 </div>

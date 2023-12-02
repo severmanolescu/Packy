@@ -53,12 +53,24 @@
 </style>
 
 <script>
-    toggleFields();
+    function toggleFields() {
+        var selection = document.getElementById("userType").value;
+        var personFields = document.getElementById("personFields");
+        var firmFields = document.getElementById("firmFields");
+
+        if (selection === "PhysicalPerson") {
+            personFields.style.display = "block";
+            firmFields.style.display = "none";
+        } else {
+            personFields.style.display = "none";
+            firmFields.style.display = "block";
+        }
+    }
 </script>
 
 <div class="signup-container">
     <h1 class="signup-title">@ViewData["Title"]</h1>
-    <form method="post" class="signup-form">
+    <form action="/signup" method="post" class="signup-form">
         <div>
             <label for="userType" class="signup-label">I am a:</label>
             <select id="userType" name="userType" class="signup-select" onchange="toggleFields()">
@@ -96,7 +108,7 @@
 
         <div>
             <label for="phone" class="signup-label">Phone Number:</label>
-            <input type="number" type="tel" id="phone" name="phone" class="signup-input">
+            <input type="tel" id="phone" name="phone" class="signup-input">
         </div>
 
         <div>
@@ -113,7 +125,7 @@
 
         <div>
             <label for="zipCode" class="signup-label">Zip Code:</label>
-            <input type="number" id="zipCode" name="zipCode" class="signup-input">
+            <input type="text" id="zipCode" name="zipCode" class="signup-input">
         </div>
 
         <div>
@@ -131,13 +143,9 @@
             <input type="password" id="repeatPassword" name="repeatPassword" class="signup-input">
         </div>
 
-        <button onclick="createUserOnFirebase()" class="signup-submit" type="button">Sign Up</button>
-
-        <div style="margin-top: 16px; text-align: center; color: red;">
-            <label for="error" class="signup-label" id="error"></label>
+        <div>
+            <input type="submit" value="Sign Up" class="signup-submit">
         </div>
-
-        <label for="created" class="signup-label" id="createdAccount"></label>
 
         <div style="margin-top: 16px; text-align: center;">
             <p>Already have an account? Go to the <a href="/Home/Login" style="color: #4CAF50; text-decoration: none;">login</a> page.</p>
