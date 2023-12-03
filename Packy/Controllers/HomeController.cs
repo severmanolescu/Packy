@@ -48,6 +48,21 @@ namespace Packy.Controllers
             return View();
         }
 
+        public IActionResult ADM_EditOrder()
+        {
+            return View();
+        }
+
+        public IActionResult ADM_AddDriver()
+        {
+            return View();
+        }
+
+        public IActionResult ADM_DriverInfo()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

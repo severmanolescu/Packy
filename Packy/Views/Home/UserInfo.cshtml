@@ -1,6 +1,43 @@
 ﻿@{
-    ViewData["Title"] = "UserInfo";
+    ViewData["Title"] = "User Information";
 }
 <h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<!-- Search bar for searching other users -->
+<div class="input-group mb-4">
+    <input type="text" class="form-control" id="userSearch" placeholder="Search for another user...">
+    <button onclick="performUserSearch()" class="btn btn-primary" type="button" id="searchButton">
+        Search
+    </button>
+</div>
+
+<!-- User Information Display -->
+<section>
+    <h2>Personal Information</h2>
+    <p id="userType"></p>
+    <p id="userName"></p>
+    <p id="userEmail"></p>
+    <p id="userCountry"></p>
+</section>
+
+<!-- Table with AWB, Sender, and Status columns -->
+<section>
+    <h2>Orders</h2>
+    <table class="table" id="ordersTable">
+        <thead>
+            <tr>
+                <th scope="col">AWB</th>
+                <th scope="col">Receiver</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</section>
+
+<script>
+    viewOrdersUser();
+
+    putUserDataToDiv();
+</script>

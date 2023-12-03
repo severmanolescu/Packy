@@ -153,15 +153,21 @@ async function createUserOnFirebase() {
     var county = document.getElementById("county").value;
     var zipCode = document.getElementById("zipCode").value;
     var address = document.getElementById("address").value;
+    var email = document.getElementById("email").value;
+    var type;
 
     var selection = document.getElementById("userType").value;
 
     if (selection === "PhysicalPerson") {
         firstName = document.getElementById("firstName").value;
         lastName = document.getElementById("lastName").value;
+
+        type = "Physical Person";
     } else {
         firstName = document.getElementById("firmName").value;
         lastName = document.getElementById("firmWebsite").value;
+
+        type = "Firm";
     }
 
     if (firstName.trim() === "" || lastName.trim() === "" || phoneNumber.trim() === "" || country.trim() === "" || county.trim() === "" || zipCode.trim() === "" || address.trim() === "") {
@@ -182,6 +188,8 @@ async function createUserOnFirebase() {
             county: county,
             zipCode: zipCode,
             address: address,
+            email: email,
+            type: type,
         };
 
         try {
@@ -315,7 +323,7 @@ function addNewOrder() {
             fragile: fragile,
             observations: observations,
             uid: uid,
-            status: "placed"
+            status: "Placed"
         };
 
         fetch("https://packy-f3a62-default-rtdb.europe-west1.firebasedatabase.app/orders.json", {
@@ -443,6 +451,74 @@ function contactButton() {
             })
             .catch(error => {
                 console.error("Error creating order:", error)
+            });
+    }
+}
+
+function addRow(awb, receiver, status) {
+    var table = document.getElementById("ordersTable").getElementsByTagName('tbody')[0];
+    var newRow = table.insertRow(table.rows.length);
+
+    var cell1 = newRow.insertCell(0);
+    var cell2 = newRow.insertCell(1);
+    var cell3 = newRow.insertCell(2);
+
+    cell1.innerHTML = awb;
+    cell2.innerHTML = receiver;
+    cell3.innerHTML = status;
+}
+
+function viewOrdersUser() {
+    var checkForUID = localStorage.getItem('uid');
+
+    if (checkForUID != null) {
+        fetch(`https://packy-f3a62-default-rtdb.europe-west1.firebasedatabase.app/orders.json`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                for (const orderId in data) {
+                    if (data.hasOwnProperty(orderId)) {
+                        const orderDetails = data[orderId];
+
+                        addRow(orderId, orderDetails.receiverName, orderDetails.status);
+                    }
+                }
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+
+                error.textContent = "The UID dowsn't exist!"
+            });
+    }
+}
+
+function putUserDataToDiv() {
+    var checkForUID = localStorage.getItem('uid');
+
+    if (checkForUID != null) {
+        fetch(`https://packy-f3a62-default-rtdb.europe-west1.firebasedatabase.app/users/${checkForUID}.json`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+
+                document.getElementById("userType").innerText =     "Type: "    + data.type;
+                document.getElementById("userName").innerText =     "Name: "    + data.firstName + " " +data.lastName;
+                document.getElementById("userEmail").innerText =    "Email: "   + data.email;
+                document.getElementById("userCountry").innerText =  "Country: " + data.country;
+
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+
+                error.textContent = "The UID dowsn't exist!"
             });
     }
 }

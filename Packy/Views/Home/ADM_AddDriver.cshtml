@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Add New Delivery Driver";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="container">
+    <form action="/Driver/AddNew" method="post">
+        <!-- Driver's Name -->
+        <div class="form-group">
+            <label for="driverName">Driver's Name:</label>
+            <input type="text" class="form-control" id="driverName" name="driverName" required>
+        </div>
+
+        <!-- Phone Number -->
+        <div class="form-group">
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" required>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" name="email">
+        </div>
+
+        <!-- License Number -->
+        <div class="form-group">
+            <label for="licenseNumber">License Number:</label>
+            <input type="text" class="form-control" id="licenseNumber" name="licenseNumber">
+        </div>
+
+        <!-- Vehicle Details -->
+        <div class="form-group">
+            <label for="vehicleDetails">Vehicle Details:</label>
+            <textarea class="form-control" id="vehicleDetails" name="vehicleDetails" rows="3"></textarea>
+        </div>
+
+        <!-- Availability -->
+        <div class="form-group">
+            <label for="availability">Availability:</label>
+            <select class="form-control" id="availability" name="availability">
+                <option value="FullTime">Full Time</option>
+                <option value="PartTime">Part Time</option>
+            </select>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary">Add Driver</button>
+    </form>
+</div>

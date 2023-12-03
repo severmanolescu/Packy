@@ -54,5 +54,45 @@ body.dark-theme {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 
+.dark-theme .table {
+    background-color: #454d55;
+    color: white;
+    /* Other dark theme table styles */
+}
+
+.dark-theme .table thead {
+    background-color: #333;
+}
+
+.dark-theme .table td, .dark-theme .table th {
+    border: 1px solid #666;
+    padding: 8px;
+}
+
+.table {
+    background-color: #ffffff;
+    color: black;
+    /* Other light theme table styles (borders, padding, etc.) */
+}
+
+.table thead {
+    background-color: #f2f2f2;
+}
+
+.table td, .table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.input-group .form-control {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.input-group #searchButton {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-left: -1px; /* Adjust as needed */
+}
 
 /* Add more dark theme styles as needed */

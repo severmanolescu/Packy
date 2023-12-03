@@ -1,0 +1,105 @@
+﻿@{
+    ViewData["Title"] = "Edit Order";
+}
+
+<h1 style="text-align: center;">@ViewData["Title"]</h1>
+
+<div style="max-width: 600px; margin: auto; padding: 20px; margin-bottom: 60px;">
+    <!-- Order AWB Search -->
+    <div style="margin-bottom: 15px;">
+        <label for="awbSearch" style="display: block; margin-bottom: 5px;">Order AWB:</label>
+        <input type="text" id="awbSearch" name="awbSearch" class="form-control" required>
+        <button onclick="searchAWB()" class="btn btn-primary mt-2" type="button">Search</button>
+    </div>
+
+    <script>
+        function searchAWB() {
+            var awb = document.getElementById('awbSearch').value;
+            // AJAX call to server to find order by AWB and populate form for editing
+            console.log('Searching for order with AWB:', awb);
+            // The below line is for demonstration purposes and would be replaced with your AJAX call
+            document.getElementById('orderDetailsForm').style.display = 'block';
+        }
+    </script>
+
+    <!-- Editable Order Details -->
+    <form id="orderDetailsForm" style="display: none;" method="post">
+        <!-- Expeditor Name -->
+        <div style="margin-bottom: 15px;">
+            <label for="expeditorName" style="display: block; margin-bottom: 5px;">Expeditor Name:</label>
+            <input type="text" id="expeditorName" name="expeditorName" class="form-control">
+        </div>
+
+        <!-- Person or Firm -->
+        <div style="margin-bottom: 15px;">
+            <label for="personOrFirm" style="display: block; margin-bottom: 5px;">Person or Firm:</label>
+            <select id="personOrFirm" name="personOrFirm" class="form-control">
+                <option value="PhysicalPerson">Physical Person</option>
+                <option value="Firm">Firm</option>
+            </select>
+        </div>
+
+        <!-- Name (Recipient or Firm) -->
+        <div style="margin-bottom: 15px;">
+            <label for="name" style="display: block; margin-bottom: 5px;">Name:</label>
+            <input type="text" id="name" name="name" class="form-control">
+        </div>
+
+        <!-- County/Region -->
+        <div style="margin-bottom: 15px;">
+            <label for="countyRegion" style="display: block; margin-bottom: 5px;">County/Region:</label>
+            <input type="text" id="countyRegion" name="countyRegion" class="form-control">
+        </div>
+
+        <!-- Zip Code -->
+        <div style="margin-bottom: 15px;">
+            <label for="zipCode" style="display: block; margin-bottom: 5px;">Zip Code:</label>
+            <input type="text" id="zipCode" name="zipCode" class="form-control">
+        </div>
+
+        <!-- Street, Building, Floor, Apt Number -->
+        <div style="margin-bottom: 15px;">
+            <label for="address" style="display: block; margin-bottom: 5px;">Street, Building, Floor, Apt Number:</label>
+            <input type="text" id="address" name="address" class="form-control">
+        </div>
+
+        <!-- Order Status -->
+        <div style="margin-bottom: 15px;">
+            <label for="status" style="display: block; margin-bottom: 5px;">Order Status:</label>
+            <select id="status" name="status" class="form-control">
+                <option value="Pending">Pending</option>
+                <option value="In Transit">In Transit</option>
+                <option value="Delivered">Delivered</option>
+                <option value="Cancelled">Cancelled</option>
+            </select>
+        </div>
+
+        <!-- Order Weight -->
+        <div style="margin-bottom: 15px;">
+            <label for="weight" style="display: block; margin-bottom: 5px;">Order Weight:</label>
+            <input type="text" id="weight" name="weight" class="form-control">
+        </div>
+
+        <!-- Fragile Option -->
+        <div style="margin-bottom: 15px;">
+            <label style="display: block; margin-bottom: 5px;">Fragile:</label>
+            <div>
+                <input type="radio" id="fragileNo" name="fragile" value="Yes">
+                <label for="fragileYes">Yes</label>
+                <input type="radio" id="fragileNo" name="fragile" value="No">
+                <label for="fragileNo">No</label>
+            </div>
+        </div>
+
+        <!-- Observations -->
+        <div style="margin-bottom: 15px;">
+            <label for="observations" style="display: block; margin-bottom: 5px;">Observations:</label>
+            <textarea id="observations" name="observations" rows="4" class="form-control"></textarea>
+        </div>
+
+        <!-- Update Button -->
+        <div style="text-align: right;">
+            <button type="submit" class="btn btn-success">Update Order</button>
+        </div>
+    </form>
+</div>

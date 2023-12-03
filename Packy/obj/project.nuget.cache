@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "I7+iKXP0jrI+O2R7MwCXbTbcBRzotIZE6/r3Sz7JCEyMB4PRaQpr4Gec9pH9nBugM3PAWXm3MuwNyKDwoiVU0g==",
+  "dgSpecHash": "1AwYYtvD8eLtbtb96n8K4s8uVlGUKu0gSRdFpA00nqUewEdd8xdFDsRVoE8a8B31vg/oc9fPUkB58r5aDDTovQ==",
   "success": true,
-  "projectFilePath": "D:\\Facultate\\Packy\\Packy\\Packy.csproj",
+  "projectFilePath": "D:\\Packy\\Packy\\Packy.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

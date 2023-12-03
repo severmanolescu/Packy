@@ -1,0 +1,74 @@
+﻿@{
+    ViewData["Title"] = "Search and Update Driver";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="container">
+    <!-- Search Bar -->
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" id="driverSearch" placeholder="Enter driver's name or ID">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" onclick="searchDriver()">Search</button>
+        </div>
+    </div>
+
+    <!-- Driver Information Form -->
+    <form id="driverInfoForm" style="display: none;" method="post">
+        <!-- Driver's Name -->
+        <div class="form-group">
+            <label for="driverName">Driver's Name:</label>
+            <input type="text" class="form-control" id="driverName" name="driverName" required>
+        </div>
+        <!-- Phone Number -->
+        <div class="form-group">
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" required>
+        </div>
+        <!-- Other fields as necessary -->
+        <!-- Update Button -->
+        <button type="submit" class="btn btn-primary">Update Driver</button>
+    </form>
+
+    <!-- Orders Table -->
+    <h2 class="mt-5">Orders Delivered by Driver</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">AWB</th>
+                <th scope="col">Sender</th>
+                <th scope="col">Receiver</th>
+            </tr>
+        </thead>
+        <tbody id="ordersTableBody">
+            <!-- Orders will be populated here -->
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <script>
+        function searchDriver() {
+            var searchQuery = document.getElementById('driverSearch').value;
+            // AJAX call to your backend to find the driver by the search query
+            console.log('Searching for driver:', searchQuery);
+            // On success, populate the form with the driver's information and show it
+            // On success, also retrieve and display the driver's associated orders
+        }
+        // Assuming you have a JavaScript function to populate the driver's orders in the table
+        function populateOrdersTable(orders) {
+            var tableBody = document.getElementById('ordersTableBody');
+            // Clear any existing rows
+            tableBody.innerHTML = '';
+            // Loop through the orders and create table rows
+            orders.forEach(function (order) {
+                var row = `<tr>
+                                               <td>${order.awb}</td>
+                                               <td>${order.sender}</td>
+                                               <td>${order.receiver}</td>
+                                           </tr>`;
+                tableBody.innerHTML += row;
+            });
+        }
+    </script>
+}
