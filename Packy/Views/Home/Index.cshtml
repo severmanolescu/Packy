@@ -2,26 +2,126 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to Packy</h1>
-    <p class="lead">Your one-stop hub for seamless delivery services.</p>
-    <p>Whether you're sending a parcel across the street or across the country, Packy is here to make the process effortless. With our cutting-edge platform, we centralize all your delivery needs into a single, easy-to-use application.</p>
-    <p>Experience the convenience of managing your deliveries with Packy, where reliability meets innovation.</p>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<div class="container-fluid main-content">
+    <!-- Hero Section -->
+    <div class="text-center hero-section">
+        <img src="/lib/Images/box.png" alt="Box Image" style="max-width: 100px; margin-bottom: 20px;" />
+        <h1 class="display-4">Welcome to Packy</h1>
+        <p class="lead">Your premier hub for unified delivery services.</p>
+        <p>Whether you're dispatching a crucial document or a precious gift, Packy ensures your parcels are handled with utmost care and efficiency. Our innovative platform aggregates a wide array of delivery services, providing you with unparalleled access and control. Choose the provider you trust, at the terms you prefer, all through Packy's seamless interface.</p>
+        <p>Experience the future of package delivery with Packy, where convenience and reliability converge.</p>
+    </div>
+
+
+    <!-- Features Section -->
+    <div class="features">
+        <h2 class="display-6 text-center">Why Choose Packy?</h2>
+        <p class="text-center">At Packy, we redefine package delivery by offering an all-encompassing, user-friendly service. Here's why Packy stands above the rest:</p>
+        <ul>
+            <li><strong>One-Stop Delivery Solution:</strong> Access an extensive range of couriers worldwide. Compare prices, delivery times, and services to make an informed choice.</li>
+            <li><strong>Comprehensive Tracking:</strong> Stay updated with real-time notifications at every step, ensuring peace of mind from dispatch to delivery.</li>
+            <li><strong>Customizable Options:</strong> From express deliveries to special care for fragile items, tailor your sending experience to suit your specific needs.</li>
+            <li><strong>Wide Network:</strong> Our vast network spans local and international couriers, ensuring your package can reach any corner of the globe, promptly and safely.</li>
+            <li><strong>Integrated Solutions:</strong> Ideal for businesses of all sizes. Integrate your logistics with Packy to streamline and optimize your operations.</li>
+            <li><strong>User-Centric Interface:</strong> Our platform is designed for ease and efficiency. Send, track, and manage your deliveries with a few simple clicks.</li>
+        </ul>
+    </div>
+
+    <!-- Call to Action Section -->
+    <div class="call-to-action text-center">
+        <h2 class="display-6">Embark on a Seamless Delivery Experience with Packy</h2>
+        <p>Are you ready to revolutionize how you send and receive packages? Sign up today and join the myriad of satisfied customers who've made Packy their go-to delivery service partner. Our commitment to flexibility means you're not just choosing a courier; you're choosing the path your package takes, tailored to your time and budget.</p>
+        <p>Explore our comprehensive services, or contact us for a personalized consultation. Whether you're a startup, a growing business, or an individual with frequent delivery needs, Packy is your solution for streamlined, stress-free logistics.</p>
+    </div>
+
+    <!-- Detailed Service Breakdown Section -->
+    <div class="service-breakdown">
+        <h2 class="display-6 text-center">Our Comprehensive Services</h2>
+        <!-- Bootstrap Carousel with Text Overlay -->
+        <div id="servicesCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#servicesCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#servicesCarousel" data-slide-to="1"></li>
+                <li data-target="#servicesCarousel" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="/lib/Images/SpeedyDelivery.jpg" alt="Speedy Delivery" class="d-block w-100">
+                    <div class="carousel-caption">
+                        <h3>Speedy Delivery</h3>
+                        <p>Choose our express service for urgent deliveries. We ensure your package arrives swiftly and safely.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="/lib/Images/GlobalReach.jpg" alt="Global Reach" class="d-block w-100">
+                    <div class="carousel-caption">
+                        <h3>Global Reach</h3>
+                        <p>No destination is out of reach. Our extensive courier network covers every corner of the globe.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="/lib/Images/CustomHandling.jpg" alt="Custom Handling" class="d-block w-100">
+                    <div class="carousel-caption">
+                        <h3>Custom Handling</h3>
+                        <p>Special care for fragile items. Our custom handling ensures your delicate packages are delivered intact.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="carousel-control-prev" href="#servicesCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only"></span>
+            </a>
+            <a class="carousel-control-next" href="#servicesCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only"></span>
+            </a>
+        </div>
+    </div>
 </div>
 
-<div class="features">
-    <h2 class="display-6">Why Choose Packy?</h2>
-    <p>At Packy, we understand the importance of every parcel and the need for a swift, secure delivery system. Here's how we stand out:</p>
-    <ul>
-        <li><strong>Comprehensive Tracking:</strong> Real-time updates keep you informed from dispatch to delivery.</li>
-        <li><strong>Wide Network:</strong> A vast network of couriers ensures your package gets where it needs to go, fast.</li>
-        <li><strong>Customizable Options:</strong> Choose delivery speeds, handling instructions, and more, for a tailored experience.</li>
-        <li><strong>Integrated Solutions:</strong> Perfect for businesses of all sizes - integrate your logistics with Packy for streamlined operations.</li>
-    </ul>
+<!-- FAQ Section -->
+<div class="faq-section">
+    <h2 class="display-6 text-center">Frequently Asked Questions</h2>
+    <div class="accordion" id="faqAccordion">
+        <div class="faq-item">
+            <h3>How do I choose the right courier?</h3>
+            <p>Our platform allows you to compare services based on price, speed, and ratings to help you make an informed decision.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Can I track my package in real time?</h3>
+            <p>Yes! Our comprehensive tracking system provides real-time updates so you know exactly where your package is at all times.</p>
+        </div>
+        <div class="faq-item">
+            <h3>What if my package is lost or damaged?</h3>
+            <p>We partner with reputable couriers and offer insurance options to protect your parcels against loss or damage.</p>
+        </div>
+    </div>
 </div>
 
-<div class="call-to-action">
-    <h2 class="display-6">Get Started with Packy</h2>
-    <p>Ready to simplify your delivery process? Sign up now and take the first step towards delivery excellence with Packy. Whether you're a small business or a large enterprise, our platform is designed to scale with your needs.</p>
-    <p>For more information, contact us or explore our services in detail.</p>
+<!-- Customer Testimonials Section -->
+<div class="testimonials">
+    <h2 class="display-6 text-center">Hear from Our Customers</h2>
+    <div class="row">
+        <div class="row">
+            <div class="col-md-4">
+                <blockquote>"Packy has made our international shipping a breeze. Their reliable service and excellent customer support have been invaluable to our business." - Alex, E-commerce Manager</blockquote>
+            </div>
+            <div class="col-md-4">
+                <blockquote>"I love the flexibility Packy offers. Being able to choose from multiple couriers for the best price and speed has saved me so much time and money." - Sarah, Freelancer</blockquote>
+            </div>
+            <div class="col-md-4">
+                <blockquote>"The real-time tracking and detailed updates give me peace of mind whenever I send something important. Packy has truly transformed the way I think about delivery." - John, Small Business Owner</blockquote>
+            </div>
+        </div>
+    </div>
+</div>
 </div>

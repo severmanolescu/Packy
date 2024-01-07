@@ -25,9 +25,13 @@
             <label for="phoneNumber">Phone Number:</label>
             <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" required>
         </div>
+        <div class="form-group">
+            <label for="driverID">Driver's ID:</label>
+            <input type="text" class="form-control" id="driverID" name="driverID" readonly>
+        </div>
         <!-- Other fields as necessary -->
         <!-- Update Button -->
-        <button type="submit" class="btn btn-primary">Update Driver</button>
+        <button type="button" class="btn btn-primary" onclick="updateDriverData()">Update Driver</button>
     </form>
 
     <!-- Orders Table -->
@@ -45,30 +49,3 @@
         </tbody>
     </table>
 </div>
-
-@section Scripts {
-    <script>
-        function searchDriver() {
-            var searchQuery = document.getElementById('driverSearch').value;
-            // AJAX call to your backend to find the driver by the search query
-            console.log('Searching for driver:', searchQuery);
-            // On success, populate the form with the driver's information and show it
-            // On success, also retrieve and display the driver's associated orders
-        }
-        // Assuming you have a JavaScript function to populate the driver's orders in the table
-        function populateOrdersTable(orders) {
-            var tableBody = document.getElementById('ordersTableBody');
-            // Clear any existing rows
-            tableBody.innerHTML = '';
-            // Loop through the orders and create table rows
-            orders.forEach(function (order) {
-                var row = `<tr>
-                                               <td>${order.awb}</td>
-                                               <td>${order.sender}</td>
-                                               <td>${order.receiver}</td>
-                                           </tr>`;
-                tableBody.innerHTML += row;
-            });
-        }
-    </script>
-}

@@ -1,14 +1,60 @@
 ﻿var isAuthenticated = false;
+var administrator = false;
 var uid = "";
 
 function checkForAuthenticatedMainMenu() {
     var newOrderNavItem = document.getElementById("newOrderNavItem");
     checkForStorage();
 
+    console.log(administrator);
+
     if (isAuthenticated === true) {
         newOrderNavItem.style.display = "block";
+
+        if (administrator === "true") {
+            addDriver.style.display = "block";
+            driverInfo.style.display = "block";
+            editOrder.style.display = "block";
+
+            index.style.display = "none";
+            contact.style.display = "none";
+        }
+        else {
+            addDriver.style.display = "none";
+            driverInfo.style.display = "none";
+            editOrder.style.display = "none";
+        }
     } else {
         newOrderNavItem.style.display = "none";
+        addDriver.style.display = "none";
+        driverInfo.style.display = "none";
+        editOrder.style.display = "none";
+    }
+}
+
+function checkForAuthenticatedSecondMenu() {
+    var login = document.getElementById("login");
+    var signUp = document.getElementById("signUp");
+    var userInfo = document.getElementById("userInfo");
+    var logout = document.getElementById("logout");
+
+    if (isAuthenticated === true) {
+        login.style.display = "none";
+        signUp.style.display = "none";
+
+        logout.style.display = "block";
+
+        if (administrator === true) {
+            userInfo.style.display = "none";
+        }
+        else {
+            userInfo.style.display = "block";
+        }
+    } else {
+        login.style.display = "block";
+        signUp.style.display = "block";
+        userInfo.style.display = "none";
+        logout.style.display = "none";
     }
 }
 
@@ -16,6 +62,7 @@ function checkForStorage() {
     var checkForAuthenntificated = localStorage.getItem('isAuthenticated');
     var checkForDarkMode = localStorage.getItem('darkMode');
     var checkForUID = localStorage.getItem('uid');
+    var admin = localStorage.getItem('administator');
 
     if (checkForAuthenntificated != null) {
         if (checkForAuthenntificated == "true") {
@@ -24,6 +71,12 @@ function checkForStorage() {
         else {
             isAuthenticated = false;
         }
+    }
+
+    console.log(admin);
+
+    if (admin != null) {
+        administrator = admin;
     }
 
     if (checkForUID != null) {
@@ -41,28 +94,6 @@ function checkForStorage() {
 
             document.body.classList.remove('dark-theme');
         }
-    }
-}
-
-function checkForAuthenticatedSecondMenu() {
-    var login = document.getElementById("login");
-    var signUp = document.getElementById("signUp");
-    var userInfo = document.getElementById("userInfo");
-    var logout = document.getElementById("logout");
-    var orders = document.getElementById("orders");
-
-    if (isAuthenticated === true) {
-        login.style.display = "none";
-        signUp.style.display = "none";
-        userInfo.style.display = "block";
-        logout.style.display = "block";
-        orders.style.display = "block";
-    } else {
-        login.style.display = "block";
-        signUp.style.display = "block";
-        userInfo.style.display = "none";
-        logout.style.display = "none";
-        orders.style.display = "none";
     }
 }
 
@@ -105,6 +136,34 @@ function logout() {
     window.location.href = "/Home/Index";
 }
 
+async function checkForAdministrator() {
+    uidTemp = localStorage.getItem("uid");
+
+    fetch(`https://packy-f3a62-default-rtdb.europe-west1.firebasedatabase.app/users/${uidTemp}.json`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data.administrator);
+
+            localStorage.setItem("administator", data.administrator);
+
+            console.log(localStorage.getItem("administator"));
+
+            window.location.href = "/Home/Index";
+        })
+        .catch(error => {
+            localStorage.setItem("administator", false);
+
+            console.error('There was a problem with the fetch operation:', error);
+
+            error.textContent = "The AWB dowsn't exist!"
+        });
+}
+
 async function logIn() {
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
@@ -131,7 +190,7 @@ async function logIn() {
             localStorage.setItem('uid', data.localId);
             localStorage.setItem('isAuthenticated', true);
 
-            window.location.href = "/Home/Index";
+            await checkForAdministrator();
         } else {
             error.textContent = "Wrong email or password"
         }
@@ -323,7 +382,8 @@ function addNewOrder() {
             fragile: fragile,
             observations: observations,
             uid: uid,
-            status: "Placed"
+            status: "Placed",
+            driver: "None"
         };
 
         fetch("https://packy-f3a62-default-rtdb.europe-west1.firebasedatabase.app/orders.json", {
@@ -484,7 +544,9 @@ function viewOrdersUser() {
                     if (data.hasOwnProperty(orderId)) {
                         const orderDetails = data[orderId];
 
-                        addRow(orderId, orderDetails.receiverName, orderDetails.status);
+                        if (orderDetails.uid === uid) {
+                            addRow(orderId, orderDetails.receiverName, orderDetails.status);
+                        }
                     }
                 }
             })
@@ -519,6 +581,372 @@ function putUserDataToDiv() {
                 console.error('There was a problem with the fetch operation:', error);
 
                 error.textContent = "The UID dowsn't exist!"
+            });
+    }
+}
+
+function clearFormInputsNewDriver() {
+    document.getElementById("driverName").value = "";
+    document.getElementById("phoneNumber").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("licenseNumber").value = "";
+    document.getElementById("vehicleDetails").value = "";
+}
+
+function addNewDriver() {
+    var driverName = document.getElementById("driverName").value;
+    var phoneNumber = document.getElementById("phoneNumber").value;
+    var email = document.getElementById("email").value;
+    var licenseNumber = document.getElementById("licenseNumber").value;
+    var vehicleDetails = document.getElementById("vehicleDetails").value;
+    var availability = document.getElementById("availability").value;
+
+    error.textContent = "";
+    info.textContent = "";
+
+    if (
+        driverName.trim() === "" ||
+        phoneNumber.trim() === "" ||
+        email.trim() === "" ||
+        licenseNumber.trim() === "" ||
+        vehicleDetails.trim() === ""
+    ) {
+        error.textContent = "Please complete all the inputs!"
+    }
+    else {
+        var driverData = {
+            driverName: driverName,
+            phoneNumber: phoneNumber,
+            email: email,
+            licenseNumber: licenseNumber,
+            vehicleDetails: vehicleDetails,
+            availability: availability,
+        };
+
+        fetch("https://packy-f3a62-default-rtdb.europe-west1.firebasedatabase.app/drivers.json", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(driverData)
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Driver add with success", data);
+
+                info.textContent = "Driver added with succes: " + data.name;
+
+                clearFormInputsNewDriver();
+            })
+            .catch(error => {
+                console.error("Error adding driver:", error)
+            });
+    }
+}
+
+async function searchForUserName(userID) {
+    try {
+        const response = await fetch(`https://packy-f3a62-default-rtdb.europe-west1.firebasedatabase.app/users/${userID}.json`);
+
+        console.log(userID);
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json();
+
+        if (data !== null) {
+            var auxiliarName = "" + data.firstName + " " + data.lastName;
+
+            return auxiliarName;
+        } else {
+            return "";
+        }
+    } catch (error) {
+        return "";
+    }
+}
+
+async function searchForOrdersForDriver(driverID) {
+    if (driverID != null) {
+        try {
+            const response = await fetch(`https://packy-f3a62-default-rtdb.europe-west1.firebasedatabase.app/orders.json`);
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            const data = await response.json();
+
+            for (const ordersID in data) {
+                if (data.hasOwnProperty(ordersID)) {
+                    const orderDetails = data[ordersID];
+
+                    if (orderDetails.driver === driverID) {
+                        const newRow = document.createElement('tr');
+
+                        const awbCell = document.createElement('td');
+                        awbCell.textContent = ordersID;
+                        newRow.appendChild(awbCell);
+
+                        const senderCell = document.createElement('td');
+                        var auxiliar = await searchForUserName(orderDetails.uid);
+                        senderCell.textContent = auxiliar;
+                        newRow.appendChild(senderCell);
+
+                        const receiverCell = document.createElement('td');
+                        receiverCell.textContent = orderDetails.receiverName;
+                        newRow.appendChild(receiverCell);
+
+                        ordersTableBody.appendChild(newRow);
+                    }
+                }
+            }
+        } catch (error) {
+            console.error('There was a problem with the fetch operation:', error);
+            // Handle the error here
+        }
+    }
+}
+
+async function putDataToInputs(driverName, phoneNumber, ID) {
+    const driverNameInput = document.getElementById('driverName');
+    const phoneNumberInput = document.getElementById('phoneNumber');
+    const driverID = document.getElementById('driverID');
+
+    const driverInfoForm = document.getElementById('driverInfoForm');
+
+    driverNameInput.value = driverName;
+    phoneNumberInput.value = phoneNumber;
+    driverID.value = ID;
+
+    driverInfoForm.style.display = "block";
+}
+
+async function checkIfSearchByName(driverName) {
+    var checkForUID = localStorage.getItem('uid');
+
+    if (checkForUID != null) {
+        try {
+            const response = await fetch(`https://packy-f3a62-default-rtdb.europe-west1.firebasedatabase.app/drivers.json`);
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            const data = await response.json();
+
+            for (const driversID in data) {
+                if (data.hasOwnProperty(driversID)) {
+                    const driverDetails = data[driversID];
+
+                    if (driverDetails.driverName === driverName) {
+                        await putDataToInputs(driverDetails.driverName, driverDetails.phoneNumber, driversID)
+
+                        // Pass driver details to searchForOrdersForDriver
+                        searchForOrdersForDriver(driversID);
+                    }
+                }
+            }
+        } catch (error) {
+            console.error('There was a problem with the fetch operation:', error);
+            // Handle the error here
+        }
+    }
+}
+
+
+async function checkIfSearchByID(driverID) {
+    try {
+        const response = await fetch(`https://packy-f3a62-default-rtdb.europe-west1.firebasedatabase.app/drivers/${driverID}.json`);
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json();
+
+        if (data !== null) {
+            await putDataToInputs(data.driverName, data.phoneNumber, driverID)
+
+            return true;
+        } else {
+            return false;
+        }
+    } catch (error) {
+        return false;
+    }
+}
+
+async function searchDriver() {
+    var searchFor = document.getElementById("driverSearch").value;
+
+    if (searchFor != "") {
+        const ordersTableBody = document.getElementById('ordersTableBody');
+
+        while (ordersTableBody.firstChild) {
+            ordersTableBody.removeChild(ordersTableBody.firstChild);
+        }
+
+        driverInfoForm.style.display = "none";
+
+        var checkForID = await checkIfSearchByID(searchFor);
+
+        if (checkForID === false) {
+            checkIfSearchByName(searchFor);
+        }
+        else {
+            searchForOrdersForDriver(searchFor)
+        }
+    }
+}
+
+function updateDriverData() {
+    const driverNameInput = document.getElementById('driverName');
+    const phoneNumberInput = document.getElementById('phoneNumber');
+    const driverID = document.getElementById('driverID');
+
+    if (driverNameInput.value !== "" && phoneNumberInput.value !== "") {
+
+        fetch(`https://packy-f3a62-default-rtdb.europe-west1.firebasedatabase.app/drivers/${driverID.value}.json`)
+            .then(response => response.json())
+            .then(existingData => {
+                existingData.driverName = driverNameInput.value;
+                existingData.phoneNumber = phoneNumberInput.value;
+
+                return fetch(`https://packy-f3a62-default-rtdb.europe-west1.firebasedatabase.app/drivers/${driverID.value}.json`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(existingData)
+                });
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Driver updated with success", data);
+            })
+            .catch(error => {
+                console.error("Error updating driver:", error);
+            });
+    }
+}
+
+async function searchAWB() {
+    const awbSearch = document.getElementById('awbSearch');
+
+    document.getElementById('orderDetailsForm').style.display = "none";
+
+    if (awbSearch.value != "") {
+        try {
+            const response = await fetch(`https://packy-f3a62-default-rtdb.europe-west1.firebasedatabase.app/orders/${awbSearch.value}.json`);
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            const data = await response.json();
+
+            if (data !== null) {
+                await populateFormFields(data);
+            }
+        }
+        catch {
+
+        }
+    }
+}
+
+async function populateFormFields(data) {
+    document.getElementById('orderDetailsForm').style.display = "block";
+
+    document.getElementById('expeditorName').value = await searchForUserName(data.uid);
+    document.getElementById('name').value = data.receiverName || "";
+    document.getElementById('countyRegion').value = data.county || "";
+    document.getElementById('zipCode').value = data.zipCode || "";
+    document.getElementById('address').value = data.address || "";
+    document.getElementById('phoneNumber').value = data.phone || "";
+    document.getElementById('status').value = data.status || "";
+    document.getElementById('height').value = data.height || "";
+    document.getElementById('width').value = data.width || "";
+    document.getElementById('length').value = data.length || "";
+    document.getElementById('weight').value = data.weight || "";
+    document.getElementById('price').value = data.price || "";
+    document.getElementById('observations').value = data.observations || "";
+
+    // Update Fragile radio buttons based on data
+    const fragileYesRadio = document.getElementById('fragileYes');
+    const fragileNoRadio = document.getElementById('fragileNo');
+    if (data.fragile === "Yes") {
+        fragileYesRadio.checked = true;
+        fragileNoRadio.checked = false;
+    } else {
+        fragileYesRadio.checked = false;
+        fragileNoRadio.checked = true;
+    }
+}
+
+function updateOrderData() {
+    const expeditorNameInput = document.getElementById('expeditorName');
+    const nameInput = document.getElementById('name');
+    const countyRegionInput = document.getElementById('countyRegion');
+    const zipCodeInput = document.getElementById('zipCode');
+    const addressInput = document.getElementById('address');
+    const phoneNumberInput = document.getElementById('phoneNumber');
+    const statusInput = document.getElementById('status');
+    const heightInput = document.getElementById('height');
+    const widthInput = document.getElementById('width');
+    const lengthInput = document.getElementById('length');
+    const weightInput = document.getElementById('weight');
+    const priceInput = document.getElementById('price');
+    const fragileYesRadio = document.getElementById('fragileYes');
+    const awbSearch = document.getElementById('awbSearch');
+    const observationsInput = document.getElementById('observations');
+
+    // Assuming the Fragile radio button group has an id of 'fragileYes' and 'fragileNo'
+    const fragileInput = fragileYesRadio.checked ? fragileYesRadio.value : 'No';
+
+    if (expeditorNameInput.value !== "" && nameInput.value !== "" && countyRegionInput.value !== "" &&
+        zipCodeInput.value !== "" && addressInput.value !== "" && phoneNumberInput.value !== "" &&
+        statusInput.value !== "" && heightInput.value !== "" && widthInput.value !== "" &&
+        lengthInput.value !== "" && weightInput.value !== "" && priceInput.value !== "" &&
+        observationsInput.value !== "") {
+
+        fetch(`https://packy-f3a62-default-rtdb.europe-west1.firebasedatabase.app/orders/${awbSearch.value}.json`)
+            .then(response => response.json())
+            .then(existingData => {
+                const orderData = {
+                    ...existingData, // Include existing data
+                    receiverName: nameInput.value,
+                    county: countyRegionInput.value,
+                    zipCode: zipCodeInput.value,
+                    address: addressInput.value,
+                    phone: phoneNumberInput.value,
+                    status: statusInput.value,
+                    height: heightInput.value,
+                    width: widthInput.value,
+                    length: lengthInput.value,
+                    weight: weightInput.value,
+                    price: priceInput.value,
+                    fragile: fragileInput,
+                    observations: observationsInput.value,
+                };
+
+                return fetch(`https://packy-f3a62-default-rtdb.europe-west1.firebasedatabase.app/orders/${awbSearch.value}.json`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(orderData)
+                });
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Order updated with success", data);
+            })
+            .catch(error => {
+                console.error("Error updating order:", error);
             });
     }
 }

@@ -15,41 +15,46 @@ html {
 }
 
 body {
+    padding-top: 56px;
     margin-bottom: 60px;
-    background-color: #fff; /* Light theme background */
-    color: #212529; /* Light theme text color */
+    background-color: #fff;
+    color: #212529;
 }
 
 .navbar {
-    background-color: #f8f9fa; /* Light theme navbar background */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1030;
+    background-color: #f8f9fa;
 }
 
 .footer {
-    background-color: #f8f9fa; /* Light theme footer background */
+    background-color: #f8f9fa;
 }
 
 /* Dark theme styles */
 body.dark-theme {
-    background-color: #343a40; /* Dark theme background for body */
-    color: #ffffff; /* Dark theme text color */
+    background-color: #343a40;
+    color: #ffffff;
 }
 
 .dark-theme .navbar {
-    background-color: #333; /* Dark theme navbar background, a bit darker than the body */
-    color: #ffffff; /* Dark theme navbar text color */
+    background-color: #333;
+    color: #ffffff;
 }
 
     .dark-theme .navbar .navbar-brand,
     .dark-theme .navbar .nav-link {
-        color: #ffffff; /* Dark theme text color for brand and links in the navbar */
+        color: #ffffff;
     }
 
 .dark-theme .footer {
-    background-color: #333; /* Dark theme footer background, matching the navbar */
-    color: #ffffff; /* Dark theme footer text color */
+    background-color: #333;
+    color: #ffffff;
 }
 
-/* Ensure to update the color for any other navbar elements if needed */
 .dark-theme .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
@@ -57,32 +62,30 @@ body.dark-theme {
 .dark-theme .table {
     background-color: #454d55;
     color: white;
-    /* Other dark theme table styles */
 }
 
-.dark-theme .table thead {
-    background-color: #333;
-}
+    .dark-theme .table thead {
+        background-color: #333;
+    }
 
-.dark-theme .table td, .dark-theme .table th {
-    border: 1px solid #666;
-    padding: 8px;
-}
+    .dark-theme .table td, .dark-theme .table th {
+        border: 1px solid #666;
+        padding: 8px;
+    }
 
 .table {
     background-color: #ffffff;
     color: black;
-    /* Other light theme table styles (borders, padding, etc.) */
 }
 
-.table thead {
-    background-color: #f2f2f2;
-}
+    .table thead {
+        background-color: #f2f2f2;
+    }
 
-.table td, .table th {
-    border: 1px solid #ddd;
-    padding: 8px;
-}
+    .table td, .table th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
 
 .input-group .form-control {
     border-top-right-radius: 0;
@@ -92,7 +95,168 @@ body.dark-theme {
 .input-group #searchButton {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
-    margin-left: -1px; /* Adjust as needed */
+    margin-left: -1px;
 }
 
-/* Add more dark theme styles as needed */
+.signup-submit {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.signup-label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.login-container {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-title {
+    text-align: center;
+}
+
+.login-form div {
+    margin-bottom: 10px;
+}
+
+.login-label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.login-input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.login-checkbox {
+    margin-top: 5px;
+}
+
+.login-submit {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+    .login-submit:hover {
+        background-color: #45a049;
+    }
+
+.signup-container {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.signup-title {
+    text-align: center;
+}
+
+.signup-form div {
+    margin-bottom: 10px;
+}
+
+.signup-label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.signup-input,
+.signup-select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.signup-submit {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+    .signup-submit:hover {
+        background-color: #45a049;
+    }
+
+.hidden {
+    display: none;
+}
+
+/* Section theming */
+.hero-section,
+.features,
+.service-breakdown,
+.faq-section,
+.testimonials,
+.call-to-action {
+    margin-bottom: 40px;
+    padding: 20px;
+}
+
+/* Alternating background for sections in light theme */
+.features,
+.testimonials {
+    background-color: #f8f9fa;
+}
+
+/* Alternating background for sections in dark theme */
+.dark-theme .features,
+.dark-theme .testimonials {
+    background-color: #333;
+}
+
+/* Adjustments for dark theme elements */
+.dark-theme .hero-section,
+.dark-theme .service-breakdown,
+.dark-theme .faq-section,
+.dark-theme .call-to-action {
+    background-color: #343a40;
+    color: #ffffff;
+}
+
+/* Additional global adjustments for dark theme */
+.dark-theme h1,
+.dark-theme h2,
+.dark-theme h3,
+.dark-theme p,
+.dark-theme li {
+    color: #ffffff;
+}
+
+.carousel-caption {
+    background-color: rgba(50, 50, 50, 0.7);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    max-width: 80%;
+    margin: 0 auto;
+    bottom: 10%;
+    left: 0;
+    right: 0;
+    text-align: center;
+}

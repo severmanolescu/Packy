@@ -12,36 +12,17 @@
         <button onclick="searchAWB()" class="btn btn-primary mt-2" type="button">Search</button>
     </div>
 
-    <script>
-        function searchAWB() {
-            var awb = document.getElementById('awbSearch').value;
-            // AJAX call to server to find order by AWB and populate form for editing
-            console.log('Searching for order with AWB:', awb);
-            // The below line is for demonstration purposes and would be replaced with your AJAX call
-            document.getElementById('orderDetailsForm').style.display = 'block';
-        }
-    </script>
-
     <!-- Editable Order Details -->
     <form id="orderDetailsForm" style="display: none;" method="post">
         <!-- Expeditor Name -->
         <div style="margin-bottom: 15px;">
             <label for="expeditorName" style="display: block; margin-bottom: 5px;">Expeditor Name:</label>
-            <input type="text" id="expeditorName" name="expeditorName" class="form-control">
-        </div>
-
-        <!-- Person or Firm -->
-        <div style="margin-bottom: 15px;">
-            <label for="personOrFirm" style="display: block; margin-bottom: 5px;">Person or Firm:</label>
-            <select id="personOrFirm" name="personOrFirm" class="form-control">
-                <option value="PhysicalPerson">Physical Person</option>
-                <option value="Firm">Firm</option>
-            </select>
+            <input type="text" id="expeditorName" name="expeditorName" class="form-control" readonly>
         </div>
 
         <!-- Name (Recipient or Firm) -->
         <div style="margin-bottom: 15px;">
-            <label for="name" style="display: block; margin-bottom: 5px;">Name:</label>
+            <label for="name" style="display: block; margin-bottom: 5px;">Receiver Name:</label>
             <input type="text" id="name" name="name" class="form-control">
         </div>
 
@@ -63,6 +44,12 @@
             <input type="text" id="address" name="address" class="form-control">
         </div>
 
+        <!-- Phone number -->
+        <div style="margin-bottom: 15px;">
+            <label for="phoneNumber" style="display: block; margin-bottom: 5px;">Phone number:</label>
+            <input type="text" id="phoneNumber" name="phoneNumber" class="form-control">
+        </div>
+
         <!-- Order Status -->
         <div style="margin-bottom: 15px;">
             <label for="status" style="display: block; margin-bottom: 5px;">Order Status:</label>
@@ -70,8 +57,27 @@
                 <option value="Pending">Pending</option>
                 <option value="In Transit">In Transit</option>
                 <option value="Delivered">Delivered</option>
+                <option value="Placed">Placed</option>
                 <option value="Cancelled">Cancelled</option>
             </select>
+        </div>
+
+        <!-- Order Height -->
+        <div style="margin-bottom: 15px;">
+            <label for="height" style="display: block; margin-bottom: 5px;">Order Height:</label>
+            <input type="text" id="height" name="height" class="form-control">
+        </div>
+
+        <!-- Order Width -->
+        <div style="margin-bottom: 15px;">
+            <label for="width" style="display: block; margin-bottom: 5px;">Order Width:</label>
+            <input type="text" id="width" name="width" class="form-control">
+        </div>
+
+        <!-- Order Length -->
+        <div style="margin-bottom: 15px;">
+            <label for="length" style="display: block; margin-bottom: 5px;">Order Length:</label>
+            <input type="text" id="length" name="length" class="form-control">
         </div>
 
         <!-- Order Weight -->
@@ -80,12 +86,18 @@
             <input type="text" id="weight" name="weight" class="form-control">
         </div>
 
+        <!-- Order Price -->
+        <div style="margin-bottom: 15px;">
+            <label for="price" style="display: block; margin-bottom: 5px;">Order Price:</label>
+            <input type="text" id="price" name="price" class="form-control">
+        </div>
+
         <!-- Fragile Option -->
         <div style="margin-bottom: 15px;">
             <label style="display: block; margin-bottom: 5px;">Fragile:</label>
             <div>
-                <input type="radio" id="fragileNo" name="fragile" value="Yes">
-                <label for="fragileYes">Yes</label>
+                <input type="radio" id="fragileYes" name="fragile" value="Yes" checked>
+                <label for="fragileYes" >Yes</label>
                 <input type="radio" id="fragileNo" name="fragile" value="No">
                 <label for="fragileNo">No</label>
             </div>
@@ -99,7 +111,7 @@
 
         <!-- Update Button -->
         <div style="text-align: right;">
-            <button type="submit" class="btn btn-success">Update Order</button>
+            <button type="button" class="btn btn-success" onclick="updateOrderData()">Update Order</button>
         </div>
     </form>
 </div>

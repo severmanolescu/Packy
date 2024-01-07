@@ -5,7 +5,7 @@
 <h1>@ViewData["Title"]</h1>
 
 <div class="container">
-    <form action="/Driver/AddNew" method="post">
+    <form method="post">
         <!-- Driver's Name -->
         <div class="form-group">
             <label for="driverName">Driver's Name:</label>
@@ -46,6 +46,14 @@
         </div>
 
         <!-- Submit Button -->
-        <button type="submit" class="btn btn-primary">Add Driver</button>
+        <button onclick="addNewDriver()" class="signup-submit" type="button">Add driver</button>
+
+        <div style="margin-bottom: 15px;">
+            <label for="error" style="display: block; margin-bottom: 5px; color: red;" id="error"></label>
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label for="info" style="display: block; margin-bottom: 5px;" id="info"></label>
+        </div>
     </form>
 </div>

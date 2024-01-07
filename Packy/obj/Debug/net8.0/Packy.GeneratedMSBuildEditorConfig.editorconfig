@@ -9,71 +9,71 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Packy
 build_property.RootNamespace = Packy
-build_property.ProjectDir = D:\Packy\Packy\
+build_property.ProjectDir = D:\Facultate\Packy\Packy\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\Packy\Packy
+build_property.MSBuildProjectDirectory = D:\Facultate\Packy\Packy
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/Packy/Packy/Views/Home/ADM_AddDriver.cshtml]
+[D:/Facultate/Packy/Packy/Views/Home/ADM_AddDriver.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBRE1fQWRkRHJpdmVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Packy/Packy/Views/Home/ADM_DriverInfo.cshtml]
+[D:/Facultate/Packy/Packy/Views/Home/ADM_DriverInfo.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBRE1fRHJpdmVySW5mby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Packy/Packy/Views/Home/ADM_EditOrder.cshtml]
+[D:/Facultate/Packy/Packy/Views/Home/ADM_EditOrder.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBRE1fRWRpdE9yZGVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Packy/Packy/Views/Home/Contact.cshtml]
+[D:/Facultate/Packy/Packy/Views/Home/Contact.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb250YWN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Packy/Packy/Views/Home/Index.cshtml]
+[D:/Facultate/Packy/Packy/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Packy/Packy/Views/Home/Login.cshtml]
+[D:/Facultate/Packy/Packy/Views/Home/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Packy/Packy/Views/Home/NewOrder.cshtml]
+[D:/Facultate/Packy/Packy/Views/Home/NewOrder.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxOZXdPcmRlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Packy/Packy/Views/Home/SignUp.cshtml]
+[D:/Facultate/Packy/Packy/Views/Home/SignUp.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTaWduVXAuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Packy/Packy/Views/Home/UserInfo.cshtml]
+[D:/Facultate/Packy/Packy/Views/Home/UserInfo.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxVc2VySW5mby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Packy/Packy/Views/Home/ViewOrder.cshtml]
+[D:/Facultate/Packy/Packy/Views/Home/ViewOrder.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxWaWV3T3JkZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Packy/Packy/Views/Shared/Error.cshtml]
+[D:/Facultate/Packy/Packy/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Packy/Packy/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/Facultate/Packy/Packy/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Packy/Packy/Views/_ViewImports.cshtml]
+[D:/Facultate/Packy/Packy/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Packy/Packy/Views/_ViewStart.cshtml]
+[D:/Facultate/Packy/Packy/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Packy/Packy/Views/Shared/_Layout.cshtml]
+[D:/Facultate/Packy/Packy/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-qyx5w34580
