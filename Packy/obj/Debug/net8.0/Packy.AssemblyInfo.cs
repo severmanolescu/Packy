@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Packy")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dcce8ebbfb77b4beefc975b4e1b8ccdddbaebe30")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3c45ec117ce0188590642ea2c6563a138979a3c3")]
 [assembly: System.Reflection.AssemblyProductAttribute("Packy")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Packy")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
